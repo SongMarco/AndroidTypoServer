@@ -7,6 +7,7 @@ $password = "ehrhekrk527";
 $database = "dbMember2";
 
 $db = mysqli_connect($host, $user, $password, $database);
+
 //echo "db connection test<br>";
 //if($db){
 //    echo "connection success<br>";
