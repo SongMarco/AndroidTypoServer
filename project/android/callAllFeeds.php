@@ -3,6 +3,7 @@
 include 'dbConnect2Member.php';
 
 
+
 //$query = "select id, writer, title, text_content from dbMember2.table_newsfeed  where id < 20 order by id" ;
 $query = "select id, writer, title, text_content from dbMember2.table_newsfeed  order by id desc limit 10";
 

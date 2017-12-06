@@ -8,6 +8,10 @@ include 'dbConnect2Member.php';
  * Time: 오전 3:13
  */
 
+//$writer = $_GET['writer'];
+//$title = $_GET['title'];
+//$content = $_GET['content'];
+
 $writer = $_POST['writer'];
 $title = $_POST['title'];
 $content = $_POST['content'];

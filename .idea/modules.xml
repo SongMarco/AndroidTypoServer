@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../phpstormLocal/.idea/phpStormLocal.iml" filepath="$PROJECT_DIR$/../phpstormLocal/.idea/phpStormLocal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AndroidTypo.iml" filepath="$PROJECT_DIR$/.idea/AndroidTypo.iml" />
     </modules>
   </component>
 </project>
