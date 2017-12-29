@@ -29,7 +29,7 @@ if($res->num_rows >= 1){
 }
 
 
-$sql = "INSERT INTO dbMember2.member(email, password, memberName, birthday) VALUES('$email', '$pw', '$name', '$birthday')";
+$sql = "INSERT INTO member(email, password, memberName, birthday) VALUES('$email', '$pw', '$name', '$birthday')";
 
 $result = mysqli_query($db, $sql);
 
