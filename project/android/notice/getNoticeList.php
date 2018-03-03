@@ -13,8 +13,9 @@ session_start();
 
 $owner_email =  $_SESSION['ses_email'];
 
-$query = "select * from dbMember2.fcm_notice_list WHERE '$owner_email' = notice_owner_email 
+$query = "select * from dbMember2.fcm_notice_list WHERE '$owner_email' = notice_owner_email
                                                    order by id DESC ";
+//$query = "select * from dbMember2.fcm_notice_list WHERE 'hh@hh.com' = notice_owner_email order by id DESC;";
 $result = $db->query($query);
 
 
@@ -48,16 +49,26 @@ while ( $row = mysqli_fetch_assoc ( $result ) ) {
     $arrayFeed = array (
         "notice_id" => $row ['id'],
 
+        // 이건 뉴스피드 작성자의 이메일이다.
         "notice_owner_email" => urlencode($row ['notice_owner_email']) ,
 
+        "notice_commenter_email" => urlencode($row['notice_commenter_email']),
+
         "notice_content" => urlencode($row['notice_content']),
+
+
+        "notice_word_name" => urlencode($row['word_name']),
 
         "notice_sender_profile_url" =>  urlencode ($row ['notice_sender_profile_url']) ,
 
         "to_where_activity" => urlencode ($row['to_where_activity']),
 
+        "notice_date"=> urlencode($row['notice_date']),
 
-        "notice_date"=> urlencode($row['notice_date'])
+        "feed_id" => urlencode($row['feed_id']),
+
+        "comment_id" => urlencode( $row['comment_id'])
+
 
     );
 

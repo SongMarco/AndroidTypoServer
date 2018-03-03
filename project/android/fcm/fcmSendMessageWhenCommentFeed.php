@@ -19,7 +19,7 @@
  */
 session_start();
 include '../dbConnect2Member.php';
-include_once('./functionSendFCM.php');
+include_once('./functionSendFCMforComment.php');
 
 $word_name = $_POST['wordName'];
 
@@ -73,7 +73,8 @@ $profileImageUrl =  $_SESSION['ses_profile_url'];
 
 
 
-$rt = send_fcm($wr_subject, $tokens, $activity , $feedID, $profileImageUrl);
+
+$rt = send_fcm_for_comment($wr_subject, $tokens, $activity , $feedID, $profileImageUrl,$word_name ,$email_feed_writer);
 
 
 //날짜 출력을 위한 코드
@@ -88,9 +89,9 @@ if($rt){
     echo "알림 전송 성공, 기기를 확인하세요";
 
     $sql = "INSERT INTO dbMember2.fcm_notice_list 
-          (notice_content, notice_sender_profile_url, to_where_activity, notice_owner_email, notice_date) 
+          (notice_content, notice_sender_profile_url, to_where_activity, notice_owner_email, notice_date, feed_id, word_name) 
           
-   VALUES ('$wr_subject_for_query', '$profileImageUrl', '$activity', '$email_feed_writer', '$noticeTime') ";
+   VALUES ('$wr_subject_for_query', '$profileImageUrl', '$activity', '$email_feed_writer', '$noticeTime', '$feedID', '$word_name') ";
 
     $db->query($sql);
 

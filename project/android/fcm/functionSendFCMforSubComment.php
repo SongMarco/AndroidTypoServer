@@ -7,7 +7,7 @@ $serverKey = "AAAAj90cIes:APA91bHt6gptpgDPqDl6LXaTo1za3pd5bAFonrShKkClZfNvCyHZXT
 
 define("GOOGLE_SERVER_KEY", $serverKey);
 
-function send_fcm_subComment($message, $id, $activity, $feedID, $commentID, $profileImageUrl)
+function send_fcm_subComment($message, $id, $activity, $feedID, $commentID, $profileImageUrl, $emailCommentWriter)
 {
     $url = 'https://fcm.googleapis.com/fcm/send';
 
@@ -24,12 +24,14 @@ function send_fcm_subComment($message, $id, $activity, $feedID, $commentID, $pro
             "feedID" => $feedID,
             "commentID" => $commentID,
 
-            "profileImageUrl" => $profileImageUrl
+            "profileImageUrl" => $profileImageUrl,
+
+            "emailCommentWriter" => $emailCommentWriter
 
 
         ),
 
-        'notification' => array("body" => $message)
+//        'notification' => array("body" => $message)
     );
 
     if (is_array($id)) {

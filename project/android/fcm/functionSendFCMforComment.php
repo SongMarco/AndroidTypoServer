@@ -8,7 +8,7 @@ $serverKey = "AAAAj90cIes:APA91bHt6gptpgDPqDl6LXaTo1za3pd5bAFonrShKkClZfNvCyHZXT
 
 define("GOOGLE_SERVER_KEY", $serverKey );
 
-function send_fcm($message, $id, $activity, $feedID, $profileImageUrl) {
+function send_fcm_for_comment($message, $id, $activity, $feedID, $profileImageUrl, $wordName, $emailFeedWriter) {
 $url = 'https://fcm.googleapis.com/fcm/send';
 
 $headers = array (
@@ -23,23 +23,13 @@ $fields = array (
     "activity" => $activity,
     "feedID" => $feedID,
 
-    "profileImageUrl" => $profileImageUrl
+    "profileImageUrl" => $profileImageUrl,
 
-
+    "wordName"=>$wordName,
+    "emailFeedWriter" => $emailFeedWriter
 ),
 
-//'notification' => array (
-//
-//
-//    "body" => $message,
-//
-//    "click_action" => "NoticeClicked"
-//
-//
-//
-//
-//
-//)
+//'notification' => array ("body" => $message)
 );
 
 if(is_array($id)) {

@@ -18,6 +18,17 @@ include_once('./functionSendFCMforSubComment.php');
 $emailCommentWriter = $_POST['emailCommentWriter'];
 
 $feedID = $_POST['feedID'];
+
+$sql = "Select writer_email from dbMember2.table_newsfeed WHERE id = '$feedID' ";
+
+$result = $db->query($sql);
+
+$row = mysqli_fetch_array($result);
+
+
+
+$emailFeedWriter = $row['writer_email'];
+
 $commentID = $_POST['commentID'];
 
 echo $commentID;
@@ -54,7 +65,7 @@ true
 
     $profileImageUrl = $_SESSION['ses_profile_url'];
     $rt = send_fcm_subComment($wr_subject, $tokens, $activity, $feedID,
-        $commentID, $profileImageUrl);
+        $commentID, $profileImageUrl, $emailCommentWriter);
 
 
     //날짜 출력을 위한 코드
@@ -69,9 +80,9 @@ true
         echo "알림 전송 성공, 기기를 확인하세요";
 
         $sql = "INSERT INTO dbMember2.fcm_notice_list 
-          (notice_content, notice_sender_profile_url, to_where_activity, notice_owner_email, notice_date) 
+          (notice_content, notice_sender_profile_url, to_where_activity, notice_owner_email, notice_commenter_email ,notice_date, feed_id, comment_id) 
           
-   VALUES ('$wr_subject', '$profileImageUrl', '$activity', '$emailCommentWriter', '$noticeTime') ";
+   VALUES ('$wr_subject', '$profileImageUrl', '$activity', '$emailFeedWriter', '$emailCommentWriter', '$noticeTime' ,'$feedID', '$commentID' ) ";
 
         $db->query($sql);
 

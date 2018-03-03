@@ -18,9 +18,9 @@ $written_time = strftime('%Y년 %m월 %d일 %H:%M', $timestamp);
 //echo $writer.$title.$content;
 
 
-$dummy_num = 500;
+$dummy_num = 100;
 
-for($i = 0; $i <$dummy_num ; $i++){
+for($i = 1; $i <$dummy_num ; $i++){
 
     $writer = 'writer '.$i;
 
@@ -40,8 +40,8 @@ for($i = 0; $i <$dummy_num ; $i++){
 
 
     $sql = "INSERT INTO dbMember2.table_newsfeed 
-      (writer, writer_email, title, text_content, img_url, writer_profile_url, feed_written_time) 
-VALUES('$writer',  '$email', '$title', '$content', '$imgUrl',  '$profile_url' , '$written_time' )";
+      (id,writer, writer_email, title, text_content, img_url, writer_profile_url, feed_written_time) 
+VALUES('$i','$writer',  '$email', '$title', '$content', '$imgUrl',  '$profile_url' , '$written_time' )";
 
     $result = $db->query($sql);
 
